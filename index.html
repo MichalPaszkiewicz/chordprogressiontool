@@ -46,7 +46,7 @@
 				for(var i = 0; i < 12; i++){
 					var correctNoteName = $scope.notes[startChar + i];
 					var tempNote = new Note(correctNoteName, startNum * 12 + i)
-					$scope.keyboard.push()
+					$scope.keyboard.push(tempNote);
 				}
 			}
 			
