@@ -28,6 +28,7 @@
 				<option value=""></option>
 				<option value="m">m</option>
 				<option value="7">7</option>
+				<option value="m7">m7</option>
 				<option value="Maj7">Maj7</option>
 				<option value="sus4">Sus4</option>
 				<option value="dim">dim</option>
@@ -113,6 +114,10 @@
 					nums.push({number: firstNum + 3});
 				}
 				if(chord.type == "7"){
+					nums.push({number: firstNum + 4});
+					nums.push({number: firstNum + 10});
+				}
+				if(chord.type == "m7"){
 					nums.push({number: firstNum + 3});
 					nums.push({number: firstNum + 10});
 				}
