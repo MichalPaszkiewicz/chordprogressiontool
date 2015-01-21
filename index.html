@@ -25,7 +25,7 @@
 				<option value="m"></option>
 			</select>
 		</div>
-		<div ng-model="addChord()">Add chord</div>
+		<div ng-click="addChord()">Add chord</div>
 		
 		<span ng-repeat="note in keyboard" class="note" ng-class="{'black': {{note.Black}}, 'in-play': {{note.inPlay}}}">
 			{{note.name}}
