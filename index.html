@@ -54,13 +54,9 @@
 			$scope.noteObjects = [];
 			
 			var setNoteObjects = function(){
-				var objcts = [];
-				
 				for(var i = 0; i < $scope.notes.length; i++){
-					objcts.push({number: i, name: $scope.notes[i]})
+					$scope.noteObjects.push({number: i, name: $scope.notes[i]})
 				}
-				
-				return objcts;
 			}
 			
 			setNoteObjects();
