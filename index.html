@@ -51,7 +51,9 @@
 			
 			$scope.notes = ["a", "a#", "b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#"];
 			
-			$scope.noteObjects = function(){
+			$scope.noteObjects = [];
+			
+			var setNoteObjects = function(){
 				var objcts = [];
 				
 				for(var i = 0; i < $scope.notes.length; i++){
@@ -60,6 +62,8 @@
 				
 				return objcts;
 			}
+			
+			setNoteObjects();
 			
 			function Note(letter, number){
 				this.Black = letter.indexOf("#") != -1;
