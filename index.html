@@ -23,6 +23,10 @@
 			<select ng-model="chord.type">
 				<option value=""></option>
 				<option value="m">m</option>
+				<option value="7">7</option>
+				<option value="Maj7">Maj7</option>
+				<option value="sus4">Sus4</option>
+				<option value="dim">dim</option>
 			</select>
 		</div>
 		<div ng-click="addChord()" class="button">Add chord</div>
@@ -87,9 +91,37 @@
 				var nums = [];
 				
 				var firstNum = chord.letter;
-				var thirdNum = chord.type == "m" ? firstNum + 3 : firstNum + 4;
 				
-				return [{number: firstNum},{number: thirdNum},{number: firstNum + 7}];
+				nums.push({number: firstNum});
+				
+				if(chord.type == "dim"){
+					nums.push({number: firstNum + 3});
+					nums.push({number: firstNum + 6});
+					return nums;
+				}
+				
+				nums.push({number: firstNum + 7})
+				
+				if(chord.type==""){
+					nums.push({number: firstNum + 4});	
+				}
+				if(chord.type == "m"){
+					nums.push({number: firstNum + 3});
+				}
+				if(chord.type == "7"){
+					nums.push({number: firstNum + 3});
+					nums.push({number: firstNum + 11});
+				}
+				if(chord.type == "Maj7"){
+					nums.push({number: firstNum + 3});
+					nums.push({number: firstNum + 10});
+				}
+				if(chord.type == "sus"){
+					nums.push({number: firstNum + 4});
+					nums.push({number: firstNum + 5});
+				}
+				
+				return nums;
 			}
 			
 			$scope.setChord = function(num){
