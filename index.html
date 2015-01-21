@@ -106,6 +106,8 @@
 					}
 				}
 				
+				$scope.$apply($scope.keyboard)
+				
 				if(num + 1 < $scope.chords.length){
 					$timeout($scope.setChord(num + 1), 3000);
 				}
