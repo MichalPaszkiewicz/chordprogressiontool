@@ -27,7 +27,7 @@
 		</div>
 		<div ng-click="addChord()" class="button">Add chord</div>
 		
-		<span ng-repeat="note in keyboard" class="note" ng-class="{'black': {{note.Black}}, 'inPlay': {{note.inPlay}}}">
+		<span ng-repeat="note in keyboard" class="note" ng-class="{'black': note.Black, 'inPlay': note.inPlay}">
 			{{note.name}}
 		</span>
 		
@@ -105,8 +105,6 @@
 						}
 					}
 				}
-				
-				$scope.$apply($scope.keyboard)
 				
 				if(num + 1 < $scope.chords.length){
 					$timeout($scope.setChord(num + 1), 3000);
