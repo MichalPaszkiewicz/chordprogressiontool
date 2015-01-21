@@ -83,10 +83,6 @@
 				addOctave(i, 0);
 			}
 			
-			function setChord(){
-				return;
-			}
-			
 			function getChordNotes(chord){
 				var nums = [];
 				
@@ -111,7 +107,7 @@
 				}
 				
 				if(num + 1 < $scope.chords.length){
-					$timeout(setChord(num + 1), 3000));
+					$timeout($scope.setChord(num + 1), 3000);
 				}
 			}
 			
