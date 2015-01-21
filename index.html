@@ -16,7 +16,7 @@
 	<div id="main-container">
 		<h1></h1>
 		
-		<span ng-repeat="note in keyboard" class="note" ng-class="{black: note.Black, in-play: note.inPlay}">
+		<span ng-repeat="note in keyboard" class="note" ng-class="{black: {{note.Black}}, in-play: {{note.inPlay}}}">
 			{{note.name}}
 		</span>
 		
@@ -66,7 +66,7 @@
 		#main-container{ min-height: 100%; }
 		footer, div.push-footer{ height: 100px; clear: both;}
 		footer { margin-top: -100px; }
-		.note{ border: 1px solid black; width: 20px; height: 100px;}
+		.note{ border: 1px solid black; width: 20px; height: 100px; display: inline-block;}
 		.black{ background: black;}
 		.note.in-play{ background: blue;}
 	</style>
