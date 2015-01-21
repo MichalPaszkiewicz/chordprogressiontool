@@ -25,11 +25,13 @@
 				<option value="m">m</option>
 			</select>
 		</div>
-		<div ng-click="addChord()">Add chord</div>
+		<div ng-click="addChord()" class="button">Add chord</div>
 		
 		<span ng-repeat="note in keyboard" class="note" ng-class="{'black': {{note.Black}}, 'in-play': {{note.inPlay}}}">
 			{{note.name}}
 		</span>
+		
+		<div class="button" ng-click="play()">Start playing</div>
 		
 		<div class="push-footer"></div>	
 	</div>
@@ -40,7 +42,7 @@
 
 	<script>
 		var cptModule = angular.module('app', []).
-		controller("cptControl", function cptControl($scope){
+		controller("cptControl", function cptControl($scope, $timeout){
 			$scope.keyboard = [];
 			$scope.chords = [];
 			
@@ -84,18 +86,51 @@
 			function setChord(){
 				return;
 			}
+			
+			function getChordNotes(chord){
+				var nums = [];
+				
+				return [{number: 1},{number: 3},{number: 6}];
+				
+			}
+			
+			$scope.setChord = function(num){
+				
+				var currentChord = $scope.chords[num];
+				var chordNotes = getChordNotes(currentChord);
+				
+				for(var  i = 0; i < $scope.keyboard.length; i++){
+					for(var j = 0; j < chordNotes.length; j++){
+						if(chordNotes[j].number == $scope.keyboard[i].number){
+							$scope.keyboard[i].inPlay = true;
+							break;
+						}else{
+							$scope.keyboard[i].inPlay = false;
+						}
+					}
+				}
+				
+				if(num + 1 < $scope.chords.length){
+					$timeout(setChord(num + 1), 3000));
+				}
+			}
+			
+			$scope.play = function(){
+				$scope.setChord(0);
+			}
 		});
 		
 	</script>
 	
 	<style>
 		html, body{padding: 0; margin: 0; width: 100%; height: 100%;}
-		#main-container{ min-height: 100%; }
+		#main-container{ min-height: 100%; max-width: 1000px; margin: auto; margin-top: 20;}
 		footer, div.push-footer{ height: 100px; clear: both;}
 		footer { margin-top: -100px; }
 		.note{ border: 1px solid black; width: 40px; height: 200px; display: inline-block; text-align: center; line-height: 100px;}
 		.black{ background: black; color: white; height: 150px; margin-left: -15px; margin-right: -15px; width: 30px;}
 		.note.in-play{ background: blue;}
+		.button{cursor: pointer;}
 	</style>
 </body>
 </html>
