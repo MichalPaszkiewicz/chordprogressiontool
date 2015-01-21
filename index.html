@@ -109,7 +109,7 @@
 				}
 				
 				if(num + 1 < $scope.chords.length){
-					$timeout($scope.setChord(num + 1), 3000);
+					$timeout(function(){$scope.setChord(num + 1);}, 3000);
 				}
 			}
 			
