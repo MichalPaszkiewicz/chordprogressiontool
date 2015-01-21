@@ -86,7 +86,7 @@
 			function getChordNotes(chord){
 				var nums = [];
 				
-				var firstNum = $scope.notes.indexOf(chord.letter);
+				var firstNum = chord.letter;
 				var thirdNum = chord.type == "m" ? firstNum + 3 : firstNum + 4;
 				
 				return [{number: firstNum},{number: thirdNum},{number: firstNum + 7}];
