@@ -18,11 +18,11 @@
 		
 		<div ng-repeat="chord in chords">
 			<select ng-model="chord.letter">
-				<option ng-repeat="noteObject in noteObjects()" value="{{noteObject.number}}">{{noteObject.name}}</option>
+				<option ng-repeat="noteObject in noteObjects" value="{{noteObject.number}}">{{noteObject.name}}</option>
 			</select>
 			<select ng-model="chord.type">
 				<option value=""></option>
-				<option value="m"></option>
+				<option value="m">m</option>
 			</select>
 		</div>
 		<div ng-click="addChord()">Add chord</div>
