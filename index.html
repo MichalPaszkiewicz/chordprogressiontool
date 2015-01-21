@@ -35,7 +35,7 @@
 			$scope.notes = ["a", "a#", "b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#"];
 			
 			function Note(letter, number){
-				this.Black = letter.indexof("#") != -1;
+				this.Black = letter.indexOf("#") != -1;
 				this.name = letter;
 				this.number = number;
 				this.inPlay = false;
