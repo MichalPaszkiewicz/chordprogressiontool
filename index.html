@@ -60,13 +60,17 @@
 				$scope.chords.push({letter: 0, type: ""});
 			}
 			
-			$scope.notes = ["a", "a#", "b", "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#"];
+			$scope.notes = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
 			
 			$scope.noteObjects = [];
 			
 			var setNoteObjects = function(){
 				for(var i = 0; i < $scope.notes.length; i++){
 					$scope.noteObjects.push({number: i, name: $scope.notes[i]})
+					
+					if($scope.notes[i].indexOf("#") != -1){
+						$scope.noteObjects.push({number: i, name: $scope.notes[(i + 1)%12] + "b"})
+					}
 				}
 			}
 			
