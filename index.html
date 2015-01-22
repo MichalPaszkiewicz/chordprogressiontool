@@ -44,7 +44,7 @@
 		
 		<div class="button" ng-click="previous()" ng-show="chordIndex != undefined && chordIndex > 0">Previous chord</div>
 		<div class="button" ng-click="play()" ng-show="chords.length > 0">Animate sequence</div>
-		<div class="button" ng-click="next()" ng-show="chords.length > 0 && chordIndex < chords.length - 1">Next chord</div>
+		<div class="button" ng-click="next()" ng-show="chords.length > 0 && (chordIndex == undefined || chordIndex < chords.length - 1)">Next chord</div>
 		
 		<p>To share this chord pattern, copy this link:</p>
 		<input style="width: 100%;" class="link" ng-model="siteLink"></input>
