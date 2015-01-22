@@ -21,6 +21,7 @@
 		<h1>Chord progression learning tool</h1>
 		
 		<div ng-repeat="chord in chords">
+			<span "style=padding:10px" class="{'green': $index = chordIndex}"></span>
 			<select ng-model="chord.letter" ng-change="setLink()">
 				<option ng-repeat="noteObject in noteObjects" value="{{noteObject.number}}" ng-selected="{{noteObject.number == chord.letter}}">{{noteObject.name}}</option>
 			</select>
@@ -231,6 +232,7 @@
 		.note.inPlay{ background: blue;}
 		.button{cursor: pointer; margin: 10px; padding: 10px; background: rgb(201, 220, 248); width: 100px; border-radius: 10px; box-shadow: 0 0 3px 1px;}
 		.button:hover{background: rgb(169, 204, 255);}
+		.green{background: green;}
 		
 	</style>
 </body>
