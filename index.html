@@ -42,6 +42,9 @@
 		
 		<div class="button" ng-click="play()">Start playing</div>
 		
+		<p>To share this chord pattern, copy this link:</p>
+		<input class="link" ng-model="getLink()"></input>
+		
 		<div class="push-footer"></div>	
 	</div>
 
@@ -54,6 +57,35 @@
 		controller("cptControl", function cptControl($scope, $timeout){
 			$scope.keyboard = [];
 			$scope.chords = [];
+			
+			$scope.initialiseChords = function(){
+				if(window.location.search.indexOf("?c") == -1){
+					return;
+				}
+				var requestChords = window.location.search.substr("3").split("+");
+				
+				for(var i = 0; i < requestChords.length; i++){
+					var tempChord = requestChords[i];
+					$scope.chords.push({letter: parseInt(tempChord), type: tempChord.substr(tempChord.indexOf((parseInt(tempChord) + "").length ) + 1)});
+				}
+			}
+			
+			$scope.getLink = function(){
+				if($scope.chords.length == 0){
+					return "";
+				}
+				
+				var linkString = "?c=";
+				
+				for(var i = 0; i < $scope.chords.length; i++){
+					if(i > 0)
+						linkString += "+";
+					}
+					linkString += $scope.chords[i].letter + $scope.chords[i].type;
+				}
+				
+				return window.location.href + linkString;
+			}
 			
 			$scope.addChord = function()
 			{
