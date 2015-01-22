@@ -202,7 +202,7 @@
 				$scope.chordIndex = num;
 				
 				if(num + 1 < $scope.chords.length && iterate){
-					$timeout(function(){$scope.setChord(num + 1);}, 3000);
+					$timeout(function(){$scope.setChord(num + 1, true);}, 3000);
 				}
 			}
 			
