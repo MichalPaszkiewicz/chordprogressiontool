@@ -21,8 +21,8 @@
 		<h1>Chord progression learning tool</h1>
 		
 		<div ng-repeat="chord in chords">
-			<select ng-model="chord.letter" ng-change="setLink()" ng-selected="{{noteObject.number == chord.letter}}">
-				<option ng-repeat="noteObject in noteObjects" value="{{noteObject.number}}">{{noteObject.name}}</option>
+			<select ng-model="chord.letter" ng-change="setLink()">
+				<option ng-repeat="noteObject in noteObjects" value="{{noteObject.number}}" ng-selected="{{noteObject.number == chord.letter}}">{{noteObject.name}}</option>
 			</select>
 			<select ng-model="chord.type" ng-change="setLink()">
 				<option value=""></option>
