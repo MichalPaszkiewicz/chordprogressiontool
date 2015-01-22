@@ -33,6 +33,7 @@
 				<option value="sus4">Sus4</option>
 				<option value="dim">dim</option>
 			</select>
+			<span class="delete" ng-click="deleteChord($index)">delete</span>
 		</div>
 		<div ng-click="addChord()" class="button">Add chord</div>
 		
@@ -68,6 +69,10 @@
 					var tempChord = requestChords[i];
 					$scope.chords.push({letter: parseInt(tempChord), type: tempChord.substr((parseInt(tempChord) + "").length)});
 				}
+			}
+			
+			$scope.deleteChord(index){
+				$scope.chords.splice(index, 1);
 			}
 			
 			$scope.initialiseChords();
