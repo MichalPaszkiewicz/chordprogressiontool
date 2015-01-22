@@ -21,7 +21,7 @@
 		<h1>Chord progression learning tool</h1>
 		
 		<div ng-repeat="chord in chords">
-			<span "style=padding:10px" class="{'green': $index == chordIndex}"></span>
+			<span "style=padding:10px" class="{'green': {{$index == chordIndex}} }"></span>
 			<select ng-model="chord.letter" ng-change="setLink()">
 				<option ng-repeat="noteObject in noteObjects" value="{{noteObject.number}}" ng-selected="{{noteObject.number == chord.letter}}">{{noteObject.name}}</option>
 			</select>
@@ -183,7 +183,7 @@
 				return nums;
 			}
 			
-			$scope.setChord = function(num){
+			$scope.setChord = function(num, iterate){
 				
 				var currentChord = $scope.chords[num];
 				var chordNotes = getChordNotes(currentChord);
@@ -201,21 +201,21 @@
 				
 				$scope.chordIndex = num;
 				
-				if(num + 1 < $scope.chords.length){
+				if(num + 1 < $scope.chords.length && iterate){
 					$timeout(function(){$scope.setChord(num + 1);}, 3000);
 				}
 			}
 			
 			$scope.play = function(){
-				$scope.setChord(0);
+				$scope.setChord(0, true);
 			}
 			
 			$scope.previous = function(){
-				$scope.setChord($scope.chordIndex - 1);
+				$scope.setChord($scope.chordIndex - 1, false);
 			}
 			
 			$scope.next = function(){
-				$scope.setChord($scope.chordIndex + 1);
+				$scope.setChord($scope.chordIndex + 1, false);
 			}
 			
 		});
