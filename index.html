@@ -41,7 +41,9 @@
 			{{note.name}}
 		</span>
 		
-		<div class="button" ng-click="play()">Start playing</div>
+		<div class="button" ng-click="previous()" ng-show="chordIndex != undefined && chordIndex > 0">Previous chord</div>
+		<div class="button" ng-click="play()" ng-show="chordIndex != undefined">Animate sequence</div>
+		<div class="button" ng-click="next()" ng-show="chordIndex != undefined && chordIndex < chords.length - 1">Next chord</div>
 		
 		<p>To share this chord pattern, copy this link:</p>
 		<input style="width: 100%;" class="link" ng-model="siteLink"></input>
@@ -58,6 +60,8 @@
 		controller("cptControl", function cptControl($scope, $timeout){
 			$scope.keyboard = [];
 			$scope.chords = [];
+			
+			$scope.chordIndex = undefined;
 			
 			$scope.initialiseChords = function(){
 				if(window.location.search.indexOf("?c") == -1){
@@ -194,6 +198,8 @@
 					}
 				}
 				
+				$scope.chordIndex = num;
+				
 				if(num + 1 < $scope.chords.length){
 					$timeout(function(){$scope.setChord(num + 1);}, 3000);
 				}
@@ -202,6 +208,15 @@
 			$scope.play = function(){
 				$scope.setChord(0);
 			}
+			
+			$scope.previous = function(){
+				$scope.setChord($scope.chordIndex - 1);
+			}
+			
+			$scope.next = function(){
+				$scope.setChord($scope.chordIndex + 1);
+			}
+			
 		});
 		
 	</script>
